@@ -12,11 +12,12 @@ USER teamcity
 WORKDIR /apache-tomcat
 
 ENV CATALINA_OPTS                \
- -Xms1g                          \
- -Xmx1g                          \
- -Xss256k                        \
  -server                         \
+ -Xms1g                          \
+ -Xmx2g                          \
+ -Xss256k                        \
  -XX:+UseCompressedOops          \
+ -XX:ReservedCodeCacheSize=350m  \
  -Djsse.enableSNIExtension=false \
  -Djava.awt.headless=true        \
  -Dfile.encoding=UTF-8           \
@@ -24,7 +25,8 @@ ENV CATALINA_OPTS                \
 
 RUN sed -i 's/connectionTimeout="20000"/connectionTimeout="60000" useBodyEncodingForURI="true" socket.txBufSize="64000" socket.rxBufSize="64000"/' conf/server.xml
 
-EXPOSE 8080
+VOLUME ["/home/teamcity"]
+EXPOSE 8080 9875
 CMD ["./bin/catalina.sh", "run"]
 
 # --------------------------------------------------------------------- teamcity
@@ -52,4 +54,4 @@ RUN curl -LO http://download.jetbrains.com/teamcity/TeamCity-$TEAMCITY_VERSION.w
 ENV SLACK_NOTIFICATION_PLUGIN_VERSION 1.4.6
 
 RUN cd webapps/teamcity/WEB-INF/plugins \
- && curl -LO https://github.com/PeteGoo/tcSlackBuildNotifier/releases/download/$SLACK_NOTIFICATION_PLUGIN_VERSION/tcSlackNotificationsPlugin.zip
+ && curl -LO https://github.com/PeteGoo/tcSlackBuildNotifier/releases/download/v$SLACK_NOTIFICATION_PLUGIN_VERSION/tcSlackNotificationsPlugin.zip

@@ -48,10 +48,16 @@ RUN curl -LO http://download.jetbrains.com/teamcity/TeamCity-$TEAMCITY_VERSION.w
  && rm -fR webapps/teamcity/WEB-INF/plugins/windowsTray                    \
 
  && echo '\n<meta name="mobile-web-app-capable" content="yes"/>' >> webapps/teamcity/WEB-INF/tags/pageMeta.tag \
- && echo '\n<meta name="theme-color" content="#000"/>'           >> webapps/teamcity/WEB-INF/tags/pageMeta.tag
+ && echo '\n<meta name="theme-color" content="#18a3fa"/>'        >> webapps/teamcity/WEB-INF/tags/pageMeta.tag
 
 # ---------------------------------------------------- slack notification plugin
 ENV SLACK_NOTIFICATION_PLUGIN_VERSION 1.4.6
 
 RUN cd webapps/teamcity/WEB-INF/plugins \
  && curl -LO https://github.com/PeteGoo/tcSlackBuildNotifier/releases/download/v$SLACK_NOTIFICATION_PLUGIN_VERSION/tcSlackNotificationsPlugin.zip
+ 
+# -------------------------------------------------------- browser notify plugin
+ENV BROWSER_NOTIFY_PLUGIN_VERSION 1.0.1
+
+RUN cd webapps/teamcity/WEB-INF/plugins \
+ && curl -LO https://github.com/grundic/teamcity-browser-notify/releases/download/v$BROWSER_NOTIFY_PLUGIN_VERSION/teamcity-browser-notify-$BROWSER_NOTIFY_PLUGIN_VERSION.zip

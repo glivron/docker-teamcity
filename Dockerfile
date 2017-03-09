@@ -32,28 +32,36 @@ CMD ["./bin/catalina.sh", "run"]
 # --------------------------------------------------------------------- teamcity
 ENV TEAMCITY_VERSION 10.0.5
 
-RUN curl -LO http://download.jetbrains.com/teamcity/TeamCity-$TEAMCITY_VERSION.war \
- && unzip -qq TeamCity-$TEAMCITY_VERSION.war -d webapps/teamcity                   \
- && rm -f TeamCity-$TEAMCITY_VERSION.war                                           \
+RUN curl -LO https://download.jetbrains.com/teamcity/TeamCity-$TEAMCITY_VERSION.war \
+ && unzip -qq TeamCity-$TEAMCITY_VERSION.war -d webapps/teamcity                    \
+ && rm -f TeamCity-$TEAMCITY_VERSION.war                                            \
 
- && rm -f  webapps/teamcity/WEB-INF/lib/tomcat-*.jar                       \
- && rm -f  webapps/teamcity/WEB-INF/lib/atmosphere-runtime-*.jar           \
+ && rm -f  webapps/teamcity/WEB-INF/lib/tomcat-*.jar                                \
+ && rm -f  webapps/teamcity/WEB-INF/lib/atmosphere-runtime-*.jar                    \
 
- && rm -f  webapps/teamcity/update/agentInstaller.exe                      \
- && rm -f  webapps/teamcity/WEB-INF/plugins/clearcase.zip                  \
- && rm -f  webapps/teamcity/WEB-INF/plugins/deploy-runner.zip              \
- && rm -f  webapps/teamcity/WEB-INF/plugins/mercurial.zip                  \
- && rm -f  webapps/teamcity/WEB-INF/plugins/eclipse-plugin-distributor.zip \
- && rm -f  webapps/teamcity/WEB-INF/plugins/vs-addin-distributor.zip       \
- && rm -f  webapps/teamcity/WEB-INF/plugins/win32-distributor.zip          \
- && rm -fr webapps/teamcity/WEB-INF/plugins/cloud-amazon                   \
- && rm -fr webapps/teamcity/WEB-INF/plugins/gant-tool                      \
- && rm -fr webapps/teamcity/WEB-INF/plugins/idea-tool                      \
- && rm -fr webapps/teamcity/WEB-INF/plugins/tfs                            \
- && rm -fr webapps/teamcity/WEB-INF/plugins/vss                            \
- && rm -fr webapps/teamcity/WEB-INF/plugins/dot*                           \
- && rm -fr webapps/teamcity/WEB-INF/plugins/visualstudiotest               \
- && rm -fr webapps/teamcity/WEB-INF/plugins/windowsTray                    \
+ && rm -f  webapps/teamcity/update/agentInstaller.exe                               \
+ && rm -f  webapps/teamcity/WEB-INF/plugins/clearcase.zip                           \
+ && rm -f  webapps/teamcity/WEB-INF/plugins/deploy-runner.zip                       \
+ && rm -f  webapps/teamcity/WEB-INF/plugins/mercurial.zip                           \
+ && rm -f  webapps/teamcity/WEB-INF/plugins/eclipse-plugin-distributor.zip          \
+ && rm -f  webapps/teamcity/WEB-INF/plugins/vs-addin-distributor.zip                \
+ && rm -f  webapps/teamcity/WEB-INF/plugins/win32-distributor.zip                   \
+ && rm -fr webapps/teamcity/WEB-INF/plugins/ant*                                    \
+ && rm -fr webapps/teamcity/WEB-INF/plugins/cloud-amazon                            \
+ && rm -fr webapps/teamcity/WEB-INF/plugins/charisma                                \
+ && rm -fr webapps/teamcity/WEB-INF/plugins/cvs                                     \
+ && rm -fr webapps/teamcity/WEB-INF/plugins/feed                                    \
+ && rm -fr webapps/teamcity/WEB-INF/plugins/email                                   \
+ && rm -fr webapps/teamcity/WEB-INF/plugins/jabber                                  \
+ && rm -fr webapps/teamcity/WEB-INF/plugins/Maven2                                  \
+ && rm -fr webapps/teamcity/WEB-INF/plugins/gant-tool                               \
+ && rm -fr webapps/teamcity/WEB-INF/plugins/idea-tool                               \
+ && rm -fr webapps/teamcity/WEB-INF/plugins/tfs                                     \
+ && rm -fr webapps/teamcity/WEB-INF/plugins/vss                                     \
+ && rm -fr webapps/teamcity/WEB-INF/plugins/dot*                                    \
+ && rm -fr webapps/teamcity/WEB-INF/plugins/usage-statistics                        \
+ && rm -fr webapps/teamcity/WEB-INF/plugins/visualstudiotest                        \
+ && rm -fr webapps/teamcity/WEB-INF/plugins/windowsTray                             \
 
  && echo '\n<meta name="mobile-web-app-capable" content="yes"/>' >> webapps/teamcity/WEB-INF/tags/pageMeta.tag \
  && echo '\n<meta name="theme-color" content="#18a3fa"/>'        >> webapps/teamcity/WEB-INF/tags/pageMeta.tag \

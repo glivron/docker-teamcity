@@ -39,6 +39,7 @@ RUN curl -LO http://download.jetbrains.com/teamcity/TeamCity-$TEAMCITY_VERSION.w
  && rm -f  webapps/teamcity/WEB-INF/lib/tomcat-*.jar                       \
  && rm -f  webapps/teamcity/WEB-INF/lib/atmosphere-runtime-*.jar           \
 
+ && rm -f  webapps/teamcity/update/agentInstaller.exe                      \
  && rm -f  webapps/teamcity/WEB-INF/plugins/clearcase.zip                  \
  && rm -f  webapps/teamcity/WEB-INF/plugins/deploy-runner.zip              \
  && rm -f  webapps/teamcity/WEB-INF/plugins/mercurial.zip                  \

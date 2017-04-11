@@ -55,7 +55,6 @@ RUN curl -LO https://download.jetbrains.com/teamcity/TeamCity-$TEAMCITY_VERSION.
  && rm -fr webapps/teamcity/WEB-INF/plugins/jabber                                  \
  && rm -fr webapps/teamcity/WEB-INF/plugins/Maven2                                  \
  && rm -fr webapps/teamcity/WEB-INF/plugins/gant-tool                               \
- && rm -fr webapps/teamcity/WEB-INF/plugins/idea-tool                               \
  && rm -fr webapps/teamcity/WEB-INF/plugins/tfs                                     \
  && rm -fr webapps/teamcity/WEB-INF/plugins/vss                                     \
  && rm -fr webapps/teamcity/WEB-INF/plugins/dot*                                    \

@@ -4,11 +4,6 @@ RUN apt-get -qq update         \
  && apt-get -qq install -y git \
  && apt-get -qq clean
 
-RUN useradd -m teamcity \
- && mkdir /logs         \
- && chown -R teamcity:teamcity /apache-tomcat /logs
-
-USER teamcity
 WORKDIR /apache-tomcat
 
 ENV CATALINA_OPTS                \
@@ -73,3 +68,11 @@ ENV SLACK_NOTIFICATION_PLUGIN_VERSION 1.4.6
 
 RUN cd webapps/teamcity/WEB-INF/plugins \
  && curl -LO https://github.com/PeteGoo/tcSlackBuildNotifier/releases/download/v$SLACK_NOTIFICATION_PLUGIN_VERSION/tcSlackNotificationsPlugin.zip
+
+
+
+RUN useradd -m teamcity \
+ && mkdir /logs         \
+ && chown -R teamcity:teamcity /apache-tomcat /logs
+
+USER teamcity

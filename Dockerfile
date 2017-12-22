@@ -14,8 +14,9 @@ RUN apt-get -qq update         \
  && unzip -qq TeamCity-$TEAMCITY_VERSION.war -d webapps/ROOT                        \
  && rm -f TeamCity-$TEAMCITY_VERSION.war                                            \
 
- && rm -f  webapps/ROOT/WEB-INF/lib/tomcat-*.jar                       \
- && rm -f  webapps/ROOT/WEB-INF/lib/atmosphere-runtime-*.jar           \
+ && ls -l  webapps/ROOT/WEB-INF/lib/             \
+ && rm -f  webapps/ROOT/WEB-INF/lib/tomcat-*.jar \
+
  && rm -f  webapps/ROOT/update/agentInstaller.exe                      \
  && rm -f  webapps/ROOT/WEB-INF/plugins/clearcase.zip                  \
  && rm -f  webapps/ROOT/WEB-INF/plugins/cloud-vmware.zip               \
@@ -49,9 +50,6 @@ RUN apt-get -qq update         \
 
  && echo '\n<meta name="mobile-web-app-capable" content="yes"/>' >> webapps/ROOT/WEB-INF/tags/pageMeta.tag \
  && echo '\n<meta name="theme-color" content="#18a3fa"/>'        >> webapps/ROOT/WEB-INF/tags/pageMeta.tag \
-
- && cd webapps/ROOT/WEB-INF/lib \
- && curl -LO https://jcenter.bintray.com/org/atmosphere/atmosphere-runtime/2.2.10/atmosphere-runtime-2.2.10.jar \
 
 # ---------------------------------------------------- slack notification plugin
  && cd ../plugins \

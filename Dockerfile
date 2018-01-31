@@ -52,7 +52,7 @@ RUN apt-get -qq update         \
  && echo '\n<meta name="theme-color" content="#18a3fa"/>'        >> webapps/ROOT/WEB-INF/tags/pageMeta.tag \
 
 # ---------------------------------------------------- slack notification plugin
- && cd ../plugins \
+ && cd webapps/ROOT/plugins \
  && curl -LO https://github.com/PeteGoo/tcSlackBuildNotifier/releases/download/v$SLACK_NOTIFICATION_PLUGIN_VERSION/tcSlackNotificationsPlugin.zip
 
 
